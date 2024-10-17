@@ -27,7 +27,6 @@ public class WikiPageTests {
         $("#wiki-tab").click();
 
         // Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
-
         $(".wiki-more-pages-link button").click(); // нажать "Show 3 more pages..."
         $$("#wiki-pages-box summary a").findBy(text("SoftAssertions")).shouldBe(visible)
                                                                                 .click();
@@ -39,6 +38,6 @@ public class WikiPageTests {
 
         // Проверка, что после заголовка идет блок с java-кодом JUnit5
         h4JUnit5Element.parent().sibling(0)
-                .$(".highlight-source-java pre").shouldHave(text("SoftAssertsExtension.class"));
+                .$(".highlight-source-java pre").shouldHave(text("@ExtendWith({SoftAssertsExtension.class})"));
     }
 }
