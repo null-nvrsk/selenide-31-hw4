@@ -19,25 +19,16 @@ public class WikiPageTests {
     }
 
     @Test
-    void softAccertionsPageHaveJUnit5() {
-        // Откройте страницу Selenide в Github
+    void softAssertionsPageHaveJUnit5Test() {
         open("/selenide/selenide");
-
-        // Перейдите в раздел Wiki проекта
         $("#wiki-tab").click();
 
-        // Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
-        $(".wiki-more-pages-link button").click(); // нажать "Show 3 more pages..."
-        $$("#wiki-pages-box summary a").findBy(text("SoftAssertions")).shouldBe(visible)
-                                                                                .click();
+        $(".wiki-more-pages-link button").click();
+        $$("#wiki-pages-box summary a").findBy(text("SoftAssertions")).shouldBe(visible).click();
 
-        // Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
-        // Проверка, что есть заголовок "Using JUnit5 extend test class"
         SelenideElement h4JUnit5Element = $$("h4.heading-element").findBy(text("Using JUnit5"));
         h4JUnit5Element.shouldBe(visible);
-
-        // Проверка, что после заголовка идет блок с java-кодом JUnit5
-        h4JUnit5Element.parent().sibling(0)
+        h4JUnit5Element.parent().sibling(0) // Проверка, что после заголовка JUnit5 идет блок с java-кодом JUnit5
                 .$(".highlight-source-java pre").shouldHave(text("@ExtendWith({SoftAssertsExtension.class})"));
     }
 }

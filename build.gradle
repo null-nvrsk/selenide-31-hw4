@@ -15,8 +15,8 @@ def selenideVersion = "7.5.1",
 
 dependencies {
     testImplementation (
-            "com.codeborne:selenide:$selenideVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "com.codeborne:selenide:$selenideVersion",
             "org.slf4j:slf4j-simple:2.0.12",
     )
 }
